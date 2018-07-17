@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Students</title>
+<style>
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th ,td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+h2 {
+	color: silver;
+	font-family: sans-serif;
+	font-style: italic;
+}
+</style>
+</head>
+<body>
+	<h2>List of Students</h2>
+
+	<table>
+		<tr>
+			<th>Student Id</th>
+			<th>Student Name</th>
+			<th>City</th>
+			<th>Email</th>
+			<th>Mobile</th>
+			<th>Operation</th>
+		</tr>
+		<tr th:each="student : ${students}">
+			<td th:text="${student.Student_Id}"></td>
+			<td th:text="${student.Student_Name}"></td>
+			<td th:text="${student.City}"></td>
+			<td th:text="${student.Email}"></td>
+			<td th:text="${student.Mobile}"></td>
+			<td><a th:href="@{/api/users/}+${student.Student_Id}">Detail</a>
+				<a th:href="@{/api/users/}+${student.Student_Id}">Delete</a></td>
+		</tr>
+	</table>
+
+</body>
+</html>
